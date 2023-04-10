@@ -18,20 +18,15 @@ const (
 )
 
 var (
-	ini *goini.Config
+	conf *goini.Config
 )
 var (
 	logger *slog.Logger
 )
 
-func init() {
-	ini = goini.SetConfig(configPath)
-	//var level slog.Level
+// todo 全部修改为显式传递日志等级
+func setLevel(level string) {
 	var opt slog.HandlerOptions
-	level, err := ini.GetValue("log", "level")
-	if err != nil {
-		slog.Warn("没有设置日志等级")
-	}
 	switch level {
 	case "Debug":
 		opt = slog.HandlerOptions{ // 自定义option
@@ -60,7 +55,6 @@ func init() {
 			AddSource: true,
 			Level:     slog.LevelDebug, // slog 默认日志级别是 info
 		}
-
 	}
 	file := "AllInOne.log"
 	logf, err := os.OpenFile(file, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0777)
@@ -70,13 +64,17 @@ func init() {
 	logger = slog.New(opt.NewJSONHandler(io.MultiWriter(logf, os.Stdout)))
 }
 func main() {
-	mission, _ := ini.GetValue("main", "mission")
-	conf := goini.SetConfig(configPath)
-	level, _ := conf.GetValue("log", "level")
-	err := os.Setenv("LEVEL", level)
-	if err != nil {
-		return
+
+	if len(os.Args) > 1 {
+		logger.Info("使用自定义配置文件", slog.String("配置文件路径", os.Args[1]))
+		conf = goini.SetConfig(os.Args[1])
+	} else {
+		logger.Info("使用默认配置文件")
+		conf = goini.SetConfig(configPath)
 	}
+	level, _ := conf.GetValue("log", "level")
+	mission, _ := conf.GetValue("main", "mission")
+	setLevel(level)
 	var (
 		root      string
 		pattern   string
