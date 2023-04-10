@@ -64,12 +64,11 @@ func setLevel(level string) {
 	logger = slog.New(opt.NewJSONHandler(io.MultiWriter(logf, os.Stdout)))
 }
 func main() {
-
 	if len(os.Args) > 1 {
-		logger.Info("使用自定义配置文件", slog.String("配置文件路径", os.Args[1]))
+		slog.Info("使用自定义配置文件", slog.String("配置文件路径", os.Args[1]))
 		conf = goini.SetConfig(os.Args[1])
 	} else {
-		logger.Info("使用默认配置文件")
+		slog.Info("使用默认配置文件")
 		conf = goini.SetConfig(configPath)
 	}
 	level, _ := conf.GetValue("log", "level")
