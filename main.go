@@ -95,7 +95,7 @@ func main() {
 		pattern, _ = conf.GetValue("pattern", "audio")
 		root, _ = conf.GetValue("root", "audio")
 		logger.Info("开始音频处理进程", slog.String("根目录", root), slog.String("pattern", pattern), slog.String("进程数", threads))
-		processAudio.ProcessAllAudio(root, pattern)
+		processAudio.ProcessAllAudios(root, pattern)
 	case "image":
 		pattern, _ = conf.GetValue("pattern", "image")
 		root, _ = conf.GetValue("root", "image")

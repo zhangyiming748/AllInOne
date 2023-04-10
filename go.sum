@@ -8,8 +8,8 @@ github.com/zhangyiming748/GetFileInfo v0.0.24/go.mod h1:tcT7dBt7j9BAxpTT7mfNs2dS
 github.com/zhangyiming748/goini v0.0.2 h1:fulHMA/+rPjyzcq+uZ55eFRaYPe71pltUAf8DjLH+BA=
 github.com/zhangyiming748/goini v0.0.2/go.mod h1:vVYdpKZOPhJXwzT7eXrooCs1cVxi3A//ox9QQsYRCyY=
 github.com/zhangyiming748/pretty v0.0.3 h1:D1/0m0OcQasOhvJZ8ljRPnfhzObar+uNu0dr20rCUrM=
-github.com/zhangyiming748/processAudio v0.0.13 h1:2940gcfjE0HuPKMUfVmGD5N3aSaqcKyclZiBRxO+32Y=
-github.com/zhangyiming748/processAudio v0.0.13/go.mod h1:9vcF39F2y52yDs+XPlhG8mjtkUW34SWL7sjNVIdx1hU=
+github.com/zhangyiming748/processAudio v0.0.14 h1:TGdm2gD8t3txTz6Xc9o8Zn7Gn1vDlkc4yGOSUghwHxk=
+github.com/zhangyiming748/processAudio v0.0.14/go.mod h1:9vcF39F2y52yDs+XPlhG8mjtkUW34SWL7sjNVIdx1hU=
 github.com/zhangyiming748/processImage v0.0.24 h1:BF3ks/+SMnNuC06BoXUNWzOAf9hl8HFjS6Z195BYjqE=
 github.com/zhangyiming748/processImage v0.0.24/go.mod h1:biGlXE8cHwkkJ/7ZbMrtKhW9VJukZTC0kVWzW6soCZM=
 github.com/zhangyiming748/processVideo v0.0.51 h1:T3x3z96J4ikmdcNaV1Mb9PLZLRk1vu7yhRVgwjnQs3Y=

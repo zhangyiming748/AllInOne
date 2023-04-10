@@ -5,7 +5,7 @@ go 1.20
 require (
 	github.com/zhangyiming748/AVmerger v0.0.21
 	github.com/zhangyiming748/goini v0.0.2
-	github.com/zhangyiming748/processAudio v0.0.13
+	github.com/zhangyiming748/processAudio v0.0.14
 	github.com/zhangyiming748/processImage v0.0.24
 	github.com/zhangyiming748/processVideo v0.0.51
 	github.com/zhangyiming748/resizeVideo v0.0.16
