@@ -1,5 +1,12 @@
 # TestAll
 
+# 指令
+`go run main.go video`
+`go run main.go audio`
+`go run main.go image`
+`go run main.go merge`
+`go run main.go rotate`
+`go run main.go resize`
 # 配置文件说明
 
 ```ini

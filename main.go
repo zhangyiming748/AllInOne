@@ -103,7 +103,7 @@ func main() {
 			threads, _ = conf.GetValue("thread", "threads")
 			logger.Info("开始图片处理进程", slog.String("根目录", root), slog.String("pattern", pattern), slog.String("进程数", threads))
 			processImage.ProcessAllImages(root, pattern, threads)
-		case "avmerger":
+		case "merge":
 			AVmerger.AllIn(root)
 		case "rotate":
 			pattern, _ = conf.GetValue("pattern", "rotate")
@@ -118,6 +118,8 @@ func main() {
 			threads, _ = conf.GetValue("thread", "threads")
 			logger.Info("开始缩小视频处理进程", slog.String("根目录", root), slog.String("pattern", pattern), slog.String("进程数", threads))
 			resizeVideo.ResizeAllVideos(root, pattern, threads)
+		default:
+			logger.Warn("需要指定正确的命令")
 		}
 	}
 }
