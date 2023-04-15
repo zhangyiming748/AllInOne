@@ -104,6 +104,7 @@ func main() {
 			logger.Info("开始图片处理进程", slog.String("根目录", root), slog.String("pattern", pattern), slog.String("进程数", threads))
 			processImage.ProcessAllImages(root, pattern, threads)
 		case "merge":
+			root,_=conf.GetValue("root","avmerger")
 			AVmerger.AllIn(root)
 		case "rotate":
 			pattern, _ = conf.GetValue("pattern", "rotate")
