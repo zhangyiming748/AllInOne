@@ -64,57 +64,60 @@ func setLevel(level string) {
 	logger = slog.New(opt.NewJSONHandler(io.MultiWriter(logf, os.Stdout)))
 }
 func main() {
-	if len(os.Args) > 1 {
-		slog.Info("使用自定义配置文件", slog.String("配置文件路径", os.Args[1]))
-		conf = goini.SetConfig(os.Args[1])
-	} else {
-		slog.Info("使用默认配置文件")
-		conf = goini.SetConfig(configPath)
-	}
-	level, _ := conf.GetValue("log", "level")
-	mission, _ := conf.GetValue("main", "mission")
-	setLevel(level)
+	defer func() {
+		if err := recover(); err != nil {
+			logger.Error("程序运行过程中有错误产生", slog.Any("错误内容", err))
+		}
+	}()
+	conf = goini.SetConfig(configPath)
 	var (
+		mission   string
 		root      string
 		pattern   string
 		threads   string
 		direction string
 	)
-
-	switch mission {
-	case "video":
-		pattern, _ = conf.GetValue("pattern", "video")
-		root, _ = conf.GetValue("root", "video")
-		threads, _ = conf.GetValue("thread", "threads")
-		logger.Info("开始视频处理进程", slog.String("根目录", root), slog.String("pattern", pattern), slog.String("进程数", threads))
-		processVideo.ProcessAllVideos(root, pattern, threads, false)
-	case "audio":
-		pattern, _ = conf.GetValue("pattern", "audio")
-		root, _ = conf.GetValue("root", "audio")
-		logger.Info("开始音频处理进程", slog.String("根目录", root), slog.String("pattern", pattern), slog.String("进程数", threads))
-		processAudio.ProcessAllAudios(root, pattern)
-	case "image":
-		pattern, _ = conf.GetValue("pattern", "image")
-		root, _ = conf.GetValue("root", "image")
-		threads, _ = conf.GetValue("thread", "threads")
-		logger.Info("开始图片处理进程", slog.String("根目录", root), slog.String("pattern", pattern), slog.String("进程数", threads))
-		processImage.ProcessAllImages(root, pattern, threads)
-	case "rotate":
-		pattern, _ = conf.GetValue("pattern", "video")
-		root, _ = conf.GetValue("root", "video")
-		threads, _ = conf.GetValue("thread", "threads")
-		direction, _ = conf.GetValue("rotate", "direction")
-		logger.Info("开始旋转视频处理进程", slog.String("根目录", root), slog.String("pattern", pattern), slog.String("进程数", threads), slog.String("方向", direction))
-		rotateVideo.Rotate(root, pattern, direction, threads)
-	case "resize":
-		pattern, _ = conf.GetValue("pattern", "video")
-		root, _ = conf.GetValue("root", "video")
-		threads, _ = conf.GetValue("thread", "threads")
-		logger.Info("开始缩小视频处理进程", slog.String("根目录", root), slog.String("pattern", pattern), slog.String("进程数", threads))
-		resizeVideo.ResizeAllVideos(root, pattern, threads)
-	case "avmerger":
-		root, _ = conf.GetValue("bilibili", "root")
-		logger.Info("开始合并哔哩哔哩进程", slog.String("根目录", root))
-		AVmerger.AllIn(root)
+	level, _ := conf.GetValue("log", "level")
+	setLevel(level)
+	if len(os.Args) > 1 {
+		slog.Warn("没有指定功能")
+		return
+	} else {
+		mission = os.Args[1]
+		switch mission {
+		case "video":
+			pattern, _ = conf.GetValue("pattern", "video")
+			root, _ = conf.GetValue("root", "video")
+			threads, _ = conf.GetValue("thread", "")
+			logger.Info("开始视频处理进程", slog.String("根目录", root), slog.String("pattern", pattern), slog.String("进程数", threads))
+			processVideo.ProcessAllVideos(root, pattern, threads, false)
+		case "audio":
+			pattern, _ = conf.GetValue("pattern", "audio")
+			root, _ = conf.GetValue("root", "audio")
+			threads, _ = conf.GetValue("thread", "threads")
+			logger.Info("开始音频处理进程", slog.String("根目录", root), slog.String("pattern", pattern), slog.String("进程数", threads))
+			processAudio.ProcessAllAudios(root, pattern)
+		case "image":
+			pattern, _ = conf.GetValue("pattern", "image")
+			root, _ = conf.GetValue("root", "image")
+			threads, _ = conf.GetValue("thread", "threads")
+			logger.Info("开始图片处理进程", slog.String("根目录", root), slog.String("pattern", pattern), slog.String("进程数", threads))
+			processImage.ProcessAllImages(root, pattern, threads)
+		case "avmerger":
+			AVmerger.AllIn(root)
+		case "rotate":
+			pattern, _ = conf.GetValue("pattern", "rotate")
+			root, _ = conf.GetValue("root", "rotate")
+			threads, _ = conf.GetValue("thread", "threads")
+			direction, _ = conf.GetValue("rotate", "direction")
+			logger.Info("开始旋转视频处理进程", slog.String("根目录", root), slog.String("pattern", pattern), slog.String("进程数", threads), slog.String("方向", direction))
+			rotateVideo.Rotate(root, pattern, direction, threads)
+		case "resize":
+			pattern, _ = conf.GetValue("pattern", "resize")
+			root, _ = conf.GetValue("root", "resize")
+			threads, _ = conf.GetValue("thread", "threads")
+			logger.Info("开始缩小视频处理进程", slog.String("根目录", root), slog.String("pattern", pattern), slog.String("进程数", threads))
+			resizeVideo.ResizeAllVideos(root, pattern, threads)
+		}
 	}
 }
