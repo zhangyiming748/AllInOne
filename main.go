@@ -79,7 +79,7 @@ func main() {
 	)
 	level, _ := conf.GetValue("log", "level")
 	setLevel(level)
-	if len(os.Args) > 1 {
+	if len(os.Args) < 1 {
 		slog.Warn("没有指定功能")
 		return
 	} else {
@@ -88,7 +88,7 @@ func main() {
 		case "video":
 			pattern, _ = conf.GetValue("pattern", "video")
 			root, _ = conf.GetValue("root", "video")
-			threads, _ = conf.GetValue("thread", "")
+			threads, _ = conf.GetValue("thread", "threads")
 			logger.Info("开始视频处理进程", slog.String("根目录", root), slog.String("pattern", pattern), slog.String("进程数", threads))
 			processVideo.ProcessAllVideos(root, pattern, threads, false)
 		case "audio":
