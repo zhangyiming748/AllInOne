@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/zhangyiming748/AVmerger"
 	"github.com/zhangyiming748/goini"
+	"github.com/zhangyiming748/pretty"
 	"github.com/zhangyiming748/processAudio"
 	"github.com/zhangyiming748/processImage"
 	"github.com/zhangyiming748/processVideo"
@@ -73,7 +74,8 @@ func main() {
 	}
 	level, _ := conf.GetValue("log", "level")
 	mission, _ := conf.GetValue("main", "mission")
-	logger.Info("本次运行获取到的全部配置", slog.Any("配置列表", conf.ReadList()))
+	config := conf.ReadList()
+	pretty.P(config)
 	setLevel(level)
 	err := os.Setenv("LEVEL", level)
 	if err != nil {
