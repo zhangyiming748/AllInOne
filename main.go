@@ -116,5 +116,10 @@ func main() {
 		root, _ = conf.GetValue("bilibili", "root")
 		logger.Info("开始合并哔哩哔哩进程", slog.String("根目录", root))
 		AVmerger.AllIn(root)
+	case "speedUp":
+		root, _ = conf.GetValue("root", "speedUp")
+		pattern, _ = conf.GetValue("pattern", "speedUp")
+		processAudio.SpeedUpAudios(root, pattern, processAudio.AudioBook)
+		logger.Info("开始有声小说加速处理", slog.String("根目录", root))
 	}
 }
