@@ -73,6 +73,7 @@ func main() {
 	}
 	level, _ := conf.GetValue("log", "level")
 	mission, _ := conf.GetValue("main", "mission")
+	logger.Info("本次运行获取到的全部配置", slog.Any("配置列表", conf.ReadList()))
 	setLevel(level)
 	var (
 		root      string
