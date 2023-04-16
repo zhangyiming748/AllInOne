@@ -75,6 +75,11 @@ func main() {
 	mission, _ := conf.GetValue("main", "mission")
 	logger.Info("本次运行获取到的全部配置", slog.Any("配置列表", conf.ReadList()))
 	setLevel(level)
+	err := os.Setenv("LEVEL", level)
+	if err != nil {
+		logger.Error("设置日志输出环境变量失败")
+		return
+	}
 	var (
 		root      string
 		pattern   string
