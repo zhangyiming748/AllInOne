@@ -12,6 +12,7 @@ import (
 	"golang.org/x/exp/slog"
 	"io"
 	"os"
+	"strings"
 )
 
 const (
@@ -65,6 +66,7 @@ func setLevel(level string) {
 	logger = slog.New(opt.NewJSONHandler(io.MultiWriter(logf, os.Stdout)))
 }
 func main() {
+	//time.Sleep(10 * time.Hour)
 	if len(os.Args) > 1 {
 		slog.Info("使用自定义配置文件", slog.String("配置文件路径", os.Args[1]))
 		conf = goini.SetConfig(os.Args[1])
@@ -98,6 +100,7 @@ func main() {
 		processVideo.ProcessAllVideos(root, pattern, threads, false)
 	case "audio":
 		pattern, _ = conf.GetValue("pattern", "audio")
+		pattern = strings.Join([]string{pattern, strings.ToUpper(pattern)}, ";")
 		root, _ = conf.GetValue("root", "audio")
 		logger.Info("开始音频处理进程", slog.String("根目录", root), slog.String("pattern", pattern), slog.String("进程数", threads))
 		processAudio.ProcessAllAudios(root, pattern)

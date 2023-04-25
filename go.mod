@@ -6,12 +6,12 @@ require (
 	github.com/zhangyiming748/AVmerger v0.0.21
 	github.com/zhangyiming748/goini v0.0.2
 	github.com/zhangyiming748/pretty v0.0.3
-	github.com/zhangyiming748/processAudio v0.0.16
+	github.com/zhangyiming748/processAudio v0.0.17
 	github.com/zhangyiming748/processImage v0.0.25
 	github.com/zhangyiming748/processVideo v0.0.53
 	github.com/zhangyiming748/resizeVideo v0.0.17
 	github.com/zhangyiming748/rotateVideo v0.0.18
-	golang.org/x/exp v0.0.0-20230321023759-10a507213a29
+	golang.org/x/exp v0.0.0-20230425010034-47ecfdc1ba53
 )
 
 require (
