@@ -67,6 +67,7 @@ func setLevel(level string) {
 }
 func main() {
 	//time.Sleep(10 * time.Hour)
+	os.Setenv("QUIET", "True")
 	if len(os.Args) > 1 {
 		slog.Info("使用自定义配置文件", slog.String("配置文件路径", os.Args[1]))
 		conf = goini.SetConfig(os.Args[1])
@@ -132,5 +133,10 @@ func main() {
 		pattern, _ = conf.GetValue("pattern", "speedUp")
 		processAudio.SpeedUpAudios(root, pattern, processAudio.AudioBook)
 		logger.Info("开始有声小说加速处理", slog.String("根目录", root))
+	case "gif":
+		root, _ = conf.GetValue("root", "gif")
+		pattern, _ = conf.GetValue("pattern", "gif")
+		threads, _ = conf.GetValue("thread", "threads")
+		processImage.ProcessAllImagesLikeGif(root, pattern, threads)
 	}
 }
