@@ -24,8 +24,8 @@ name: Auto Release
 
 on:
   push:
-    tags:
-      - '*'
+    branches:
+      - master
 
 permissions:
   contents: write
