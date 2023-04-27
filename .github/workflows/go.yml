@@ -23,7 +23,15 @@ jobs:
     - name: Set GoModule
       run: export PATH=$PATH:$(go env GOPATH)/bin
     - name: tidy
-      run: go mod tidy
+      run: go get -u github.com/zhangyiming748/AVmerger@v0.0.21
+#      run: go get -u github.com/zhangyiming748/goini@v0.0.2
+#      run: go get -u github.com/zhangyiming748/pretty@v0.0.3
+#      run: go get -u github.com/zhangyiming748/processAudio@v0.0.17
+#      run: go get -u github.com/zhangyiming748/processImage@v0.0.26
+#      run: go get -u github.com/zhangyiming748/processVideo@v0.0.54
+#      run: go get -u github.com/zhangyiming748/resizeVideo@v0.0.17
+#      run: go get -u github.com/zhangyiming748/rotateVideo@v0.0.18
+#      run: go get -u golang.org/x/exp@v0.0.0-20230425010034-47ecfdc1ba53
     - name: vendor
       run: go mod vendor
     - name: Build
