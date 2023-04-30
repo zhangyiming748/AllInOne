@@ -21,8 +21,8 @@ github.com/zhangyiming748/processVideo v0.0.54 h1:DjVMP0CnuHGMsq+9pmDMJCW8XobvbM
 github.com/zhangyiming748/processVideo v0.0.54/go.mod h1:1JMeukUW2KB4aKpKwntIRL0X5LFIl0mIanP81pAsPVU=
 github.com/zhangyiming748/replace v0.0.7 h1:kB0UdaweKwPIXd8EU7T8bj0mBZOmv3pObbSd8ehC5QQ=
 github.com/zhangyiming748/replace v0.0.7/go.mod h1:R3otYn+0qxaHOVaz0LafMwoDjhTexJijrLgfcDyOYCQ=
-github.com/zhangyiming748/resizeVideo v0.0.17 h1:xucipEundSbAg+la2tflH5lkzv6vglkKTKIgaXXLQs0=
-github.com/zhangyiming748/resizeVideo v0.0.17/go.mod h1:efKI2iKlTSvaQabrz0eTzwWOI4beGXkZt7D86JO+ON0=
+github.com/zhangyiming748/resizeVideo v0.0.18 h1:/tD4U5Iu9EM88bYAbiLoF9puvmx//eX2oi0xKXI3Hfc=
+github.com/zhangyiming748/resizeVideo v0.0.18/go.mod h1:8CzQ+wKIgy5khEJ9hO0cbe/rhnYIOtLRlrAmWmHPw40=
 github.com/zhangyiming748/rotateVideo v0.0.18 h1:HeFKHusSkvQ/3xlhQdkbo2STD2T9GPMKgKowG9+8gU0=
 github.com/zhangyiming748/rotateVideo v0.0.18/go.mod h1:8T8zkhYIjI1FxelnBw4L/kYVjCYACKYVo4jNXDU4Dak=
 github.com/zhangyiming748/voiceAlert v0.0.17 h1:PvIBZLx32BnpyITCCbjHUryrcHLFwyJvdDAm5Pt2v9w=

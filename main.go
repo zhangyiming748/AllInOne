@@ -13,6 +13,7 @@ import (
 	"io"
 	"os"
 	"strings"
+	"time"
 )
 
 const (
@@ -65,8 +66,20 @@ func setLevel(level string) {
 	}
 	logger = slog.New(opt.NewJSONHandler(io.MultiWriter(logf, os.Stdout)))
 }
+func startOn(t string) {
+	for true {
+		now := time.Now()
+		target, _ := time.ParseInLocation("15:04", t, time.Local)
+		if target.After(now) {
+			return
+		} else {
+			logger.Warn("still alive", slog.Any("time", now), slog.String("target", t))
+			time.Sleep(30 * time.Minute)
+		}
+	}
+}
 func main() {
-	//time.Sleep(10 * time.Hour)
+
 	os.Setenv("QUIET", "True")
 	if len(os.Args) > 1 {
 		slog.Info("使用自定义配置文件", slog.String("配置文件路径", os.Args[1]))
@@ -91,7 +104,8 @@ func main() {
 		threads   string
 		direction string
 	)
-
+	staterOn, _ := conf.GetValue("StartAt", "time")
+	startOn(staterOn)
 	switch mission {
 	case "video":
 		pattern, _ = conf.GetValue("pattern", "video")

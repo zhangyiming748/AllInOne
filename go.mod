@@ -9,7 +9,7 @@ require (
 	github.com/zhangyiming748/processAudio v0.0.17
 	github.com/zhangyiming748/processImage v0.0.26
 	github.com/zhangyiming748/processVideo v0.0.54
-	github.com/zhangyiming748/resizeVideo v0.0.17
+	github.com/zhangyiming748/resizeVideo v0.0.18
 	github.com/zhangyiming748/rotateVideo v0.0.18
 	golang.org/x/exp v0.0.0-20230425010034-47ecfdc1ba53
 )
