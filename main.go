@@ -68,9 +68,8 @@ func setLevel(level string) {
 }
 func startOn(t string) {
 	for true {
-		now := time.Now()
-		target, _ := time.ParseInLocation("15:04", t, time.Local)
-		if target.After(now) {
+		now := time.Now().Format("15")
+		if t == now {
 			return
 		} else {
 			logger.Warn("still alive", slog.Any("time", now), slog.String("target", t))

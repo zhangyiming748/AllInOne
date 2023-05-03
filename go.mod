@@ -7,10 +7,10 @@ require (
 	github.com/zhangyiming748/goini v0.0.2
 	github.com/zhangyiming748/pretty v0.0.3
 	github.com/zhangyiming748/processAudio v0.0.17
-	github.com/zhangyiming748/processImage v0.0.26
-	github.com/zhangyiming748/processVideo v0.0.54
+	github.com/zhangyiming748/processImage v0.0.27
+	github.com/zhangyiming748/processVideo v0.0.55
 	github.com/zhangyiming748/resizeVideo v0.0.18
-	github.com/zhangyiming748/rotateVideo v0.0.18
+	github.com/zhangyiming748/rotateVideo v0.0.19
 	golang.org/x/exp v0.0.0-20230425010034-47ecfdc1ba53
 )
 
