@@ -68,7 +68,7 @@ func setLevel(level string) {
 }
 func startOn(t string) {
 	for true {
-		now := time.Now().Format("15")
+		now := time.Now().Local().Format("15")
 		if t == now {
 			return
 		} else {
