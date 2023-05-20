@@ -103,9 +103,25 @@ func main() {
 		threads   string
 		direction string
 	)
-	staterOn, _ := conf.GetValue("StartAt", "time")
-	startOn(staterOn)
+	//staterOn, _ := conf.GetValue("StartAt", "time")
+	//startOn(staterOn)
 	switch mission {
+	case "i&v":
+		{
+			pattern, _ = conf.GetValue("pattern", "video")
+			root, _ = conf.GetValue("root", "video")
+			threads, _ = conf.GetValue("thread", "threads")
+			logger.Info("开始视频处理进程", slog.String("根目录", root), slog.String("pattern", pattern), slog.String("进程数", threads))
+			processVideo.ProcessAllVideos(root, pattern, threads, false)
+		}
+
+		{
+			pattern, _ = conf.GetValue("pattern", "image")
+			root, _ = conf.GetValue("root", "image")
+			threads, _ = conf.GetValue("thread", "threads")
+			logger.Info("开始图片处理进程", slog.String("根目录", root), slog.String("pattern", pattern), slog.String("进程数", threads))
+			processImage.ProcessAllImages(root, pattern, threads)
+		}
 	case "video":
 		pattern, _ = conf.GetValue("pattern", "video")
 		root, _ = conf.GetValue("root", "video")
