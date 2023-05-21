@@ -148,6 +148,7 @@ func main() {
 		direction, _ = conf.GetValue("rotate", "direction")
 		slog.Info("开始旋转视频处理进程", slog.String("根目录", root), slog.String("pattern", pattern), slog.String("进程数", threads), slog.String("方向", direction))
 		processVideo.Rotate(root, pattern, direction, threads)
+		processVideo.ConvAllVideos2H265(root, pattern, threads)
 	case "resize":
 		pattern, _ = conf.GetValue("pattern", "video")
 		root, _ = conf.GetValue("root", "video")
