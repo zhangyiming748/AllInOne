@@ -7,9 +7,9 @@ require (
 	github.com/zhangyiming748/goini v0.0.2
 	github.com/zhangyiming748/processAudio v0.0.18
 	github.com/zhangyiming748/processImage v0.0.28
-	github.com/zhangyiming748/processVideo v0.0.57
+	github.com/zhangyiming748/processVideo v0.0.58
 	github.com/zhangyiming748/sendEmailAlert v0.0.13
-	golang.org/x/exp v0.0.0-20230519143937-03e91628a987
+	golang.org/x/exp v0.0.0-20230522175609-2e198f4a06a1
 )
 
 require (

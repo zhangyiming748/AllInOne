@@ -100,8 +100,8 @@ func main() {
 		threads   string
 		direction string
 	)
-	//staterOn, _ := conf.GetValue("StartAt", "time")
-	//startOn(staterOn)
+	staterOn, _ := conf.GetValue("StartAt", "time")
+	startOn(staterOn)
 	if quiet, _ := conf.GetValue("alert", "quiet"); quiet == "yes" {
 		os.Setenv("QUIET", "True")
 		slog.Info("静音模式")
@@ -148,7 +148,6 @@ func main() {
 		direction, _ = conf.GetValue("rotate", "direction")
 		slog.Info("开始旋转视频处理进程", slog.String("根目录", root), slog.String("pattern", pattern), slog.String("进程数", threads), slog.String("方向", direction))
 		processVideo.Rotate(root, pattern, direction, threads)
-		processVideo.ConvAllVideos2H265(root, pattern, threads)
 	case "resize":
 		pattern, _ = conf.GetValue("pattern", "video")
 		root, _ = conf.GetValue("root", "video")
@@ -192,7 +191,8 @@ func sendEmail(start, end time.Time) {
 	}
 	i.SetHost(sendEmailAlert.NetEase.SMTP)
 	i.SetPort(sendEmailAlert.NetEase.SMTPProt)
-	i.SetSubject("AllInOne任务完成")
+	subject, _ := conf.GetValue("main", "mission")
+	i.SetSubject(strings.Join([]string{"AllInOne", subject, "任务完成"}, ""))
 	text := strings.Join([]string{start.Format("任务开始时间 2006年01月02日 15:04:05"), end.Format("任务结束时间 2006年01月02日 15:04:05"), fmt.Sprintf("任务用时%.3f分\n", end.Sub(start).Minutes())}, "<br>")
 	i.SetText(text)
 	sendEmailAlert.Send(i)
