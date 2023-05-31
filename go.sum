@@ -3,8 +3,8 @@ github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZb
 github.com/stretchr/testify v1.8.1 h1:w7B6lhMri9wdJUVmEZPGGhZzrYTPvgJArz7wNPgYKsk=
 github.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e h1:JVG44RsyaB9T2KIHavMF/ppJZNG9ZpyihvCd0w101no=
 github.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e/go.mod h1:RbqR21r5mrJuqunuUZ/Dhy/avygyECGrLceyNeo4LiM=
-github.com/zhangyiming748/AVmerger v0.0.23 h1:P2DzJZZYgvZsNnbTewmPBAoT9ekIKveOmSvOZe0m/T4=
-github.com/zhangyiming748/AVmerger v0.0.23/go.mod h1:qUMyPswRL4PrL0n3sfYgJVT7QNWiSr/eH75QQ0vHTkI=
+github.com/zhangyiming748/AVmerger v0.0.24 h1:tXl+vCGKffwpKU0+xiR6EVniFYiQx6NgQ209ePmsK5I=
+github.com/zhangyiming748/AVmerger v0.0.24/go.mod h1:qUMyPswRL4PrL0n3sfYgJVT7QNWiSr/eH75QQ0vHTkI=
 github.com/zhangyiming748/GetAllFolder v0.0.15 h1:7ygbz2A3TXV924xS+D5JK4OEUGg5zx3xPEtQ0bsD23E=
 github.com/zhangyiming748/GetAllFolder v0.0.15/go.mod h1:KGbwfCyI+hUrTqwlBFOTGaTJHLsdKQAT2hfLId5bEpM=
 github.com/zhangyiming748/GetFileInfo v0.0.35 h1:JZlBQXKL9vkIW7ft46eUZ+wV+czZDXKwfF834qWLJ/M=
