@@ -100,8 +100,8 @@ func main() {
 		threads   string
 		direction string
 	)
-	staterOn, _ := conf.GetValue("StartAt", "time")
-	startOn(staterOn)
+	//staterOn, _ := conf.GetValue("StartAt", "time")
+	//startOn(staterOn)
 	if quiet, _ := conf.GetValue("alert", "quiet"); quiet == "yes" {
 		os.Setenv("QUIET", "True")
 		slog.Info("静音模式")
@@ -157,7 +157,7 @@ func main() {
 	case "avmerger":
 		root, _ = conf.GetValue("bilibili", "root")
 		slog.Info("开始合并哔哩哔哩进程", slog.String("根目录", root))
-		AVmerger.AllIn(root)
+		AVmerger.AllInH265(root)
 	case "speedUp":
 		root, _ = conf.GetValue("root", "speedUp")
 		pattern, _ = conf.GetValue("pattern", "speedUp")
