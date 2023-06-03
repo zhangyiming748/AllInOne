@@ -16,3 +16,8 @@ vendor
 *.log
 main
 /test/
+*.jpg
+*.mp4
+*.MOV
+*.png
+*.zip
