@@ -102,10 +102,17 @@ func main() {
 	)
 	staterOn, _ := conf.GetValue("StartAt", "time")
 	startOn(staterOn)
+	end := time.Now()
 	if quiet, _ := conf.GetValue("alert", "quiet"); quiet == "yes" {
 		os.Setenv("QUIET", "True")
 		slog.Info("静音模式")
 	}
+	defer func() {
+		if email, _ := conf.GetValue("alert", "email"); email == "yes" {
+			slog.Info("发送任务完成邮件")
+			sendEmail(start, end)
+		}
+	}()
 	switch mission {
 	case "i&v":
 		{
@@ -171,11 +178,7 @@ func main() {
 		threads, _ = conf.GetValue("thread", "threads")
 		processImage.ProcessAllImagesLikeGif(root, pattern, threads)
 	}
-	end := time.Now()
-	if email, _ := conf.GetValue("alert", "email"); email == "yes" {
-		slog.Info("发送任务完成邮件")
-		sendEmail(start, end)
-	}
+	end = time.Now()
 }
 func sendEmail(start, end time.Time) {
 	i := new(sendEmailAlert.Info)
