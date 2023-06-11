@@ -5,6 +5,10 @@ go 1.20
 require (
 	github.com/zhangyiming748/AVmerger v0.0.26
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+	github.com/zhangyiming748/GBK2UTF8 v0.0.2
+>>>>>>> Stashed changes
 =======
 	github.com/zhangyiming748/GBK2UTF8 v0.0.2
 >>>>>>> Stashed changes

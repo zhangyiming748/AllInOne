@@ -6,6 +6,11 @@ github.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e/go.mod h1:RbqR21r5mrJu
 github.com/zhangyiming748/AVmerger v0.0.26 h1:uOqsrG8F6XAZlkaH0Sko50SYKd6qnrPgNe1UForqkJc=
 github.com/zhangyiming748/AVmerger v0.0.26/go.mod h1:9a/rA/WRfdqvVAMF7QgO7Gm73yIlcETuwV+tO1FUYD8=
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+github.com/zhangyiming748/GBK2UTF8 v0.0.2 h1:XosMwAT+VLMZsBXGGC2ndnvnOVX0CXislgmf6Ap0eg0=
+github.com/zhangyiming748/GBK2UTF8 v0.0.2/go.mod h1:LFUYSOCHoSJCpM7mutQrvx8TTXngrHT4xdM9ehhjb2A=
+>>>>>>> Stashed changes
 =======
 github.com/zhangyiming748/GBK2UTF8 v0.0.2 h1:XosMwAT+VLMZsBXGGC2ndnvnOVX0CXislgmf6Ap0eg0=
 github.com/zhangyiming748/GBK2UTF8 v0.0.2/go.mod h1:LFUYSOCHoSJCpM7mutQrvx8TTXngrHT4xdM9ehhjb2A=
