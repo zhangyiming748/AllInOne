@@ -127,6 +127,7 @@ func main() {
 		}
 	case "video":
 		pattern, _ = conf.GetValue("pattern", "video")
+		pattern = strings.Join([]string{pattern, strings.ToUpper(pattern)}, ";")
 		root, _ = conf.GetValue("root", "video")
 		threads, _ = conf.GetValue("thread", "threads")
 		slog.Info("开始视频处理进程", slog.String("根目录", root), slog.String("pattern", pattern), slog.String("进程数", threads))
@@ -134,11 +135,13 @@ func main() {
 	case "audio":
 		pattern, _ = conf.GetValue("pattern", "audio")
 		pattern = strings.Join([]string{pattern, strings.ToUpper(pattern)}, ";")
+		slog.Warn("查找到的", slog.String("pattern", pattern))
 		root, _ = conf.GetValue("root", "audio")
 		slog.Info("开始音频处理进程", slog.String("根目录", root), slog.String("pattern", pattern), slog.String("进程数", threads))
 		processAudio.ConvAllAudios(root, pattern)
 	case "image":
 		pattern, _ = conf.GetValue("pattern", "image")
+		pattern = strings.Join([]string{pattern, strings.ToUpper(pattern)}, ";")
 		root, _ = conf.GetValue("root", "image")
 		threads, _ = conf.GetValue("thread", "threads")
 		slog.Info("开始图片处理进程", slog.String("根目录", root), slog.String("pattern", pattern), slog.String("进程数", threads))
