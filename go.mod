@@ -4,6 +4,7 @@ go 1.20
 
 require (
 	github.com/zhangyiming748/AVmerger v0.0.26
+	github.com/zhangyiming748/GBK2UTF8 v0.0.2
 	github.com/zhangyiming748/goini v0.0.2
 	github.com/zhangyiming748/processAudio v0.0.18
 	github.com/zhangyiming748/processImage v0.0.28
