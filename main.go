@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/zhangyiming748/AVmerger"
+	"github.com/zhangyiming748/GBK2UTF8"
 	"github.com/zhangyiming748/goini"
 	"github.com/zhangyiming748/processAudio"
 	"github.com/zhangyiming748/processImage"
@@ -102,10 +103,17 @@ func main() {
 	)
 	staterOn, _ := conf.GetValue("StartAt", "time")
 	startOn(staterOn)
+	end := time.Now()
 	if quiet, _ := conf.GetValue("alert", "quiet"); quiet == "yes" {
 		os.Setenv("QUIET", "True")
 		slog.Info("静音模式")
 	}
+	defer func() {
+		if email, _ := conf.GetValue("alert", "email"); email == "yes" {
+			slog.Info("发送任务完成邮件")
+			sendEmail(start, end)
+		}
+	}()
 	switch mission {
 	case "i&v":
 		{
@@ -119,6 +127,7 @@ func main() {
 
 		{
 			pattern, _ = conf.GetValue("pattern", "image")
+			pattern = strings.Join([]string{pattern, strings.ToUpper(pattern)}, ";")
 			root, _ = conf.GetValue("root", "image")
 			threads, _ = conf.GetValue("thread", "threads")
 			pattern = strings.Join([]string{pattern, strings.ToUpper(pattern)}, ";")
@@ -148,6 +157,7 @@ func main() {
 		processImage.ProcessAllImages(root, pattern, threads)
 	case "rotate":
 		pattern, _ = conf.GetValue("pattern", "video")
+		pattern = strings.Join([]string{pattern, strings.ToUpper(pattern)}, ";")
 		root, _ = conf.GetValue("root", "video")
 		threads, _ = conf.GetValue("thread", "threads")
 		direction, _ = conf.GetValue("rotate", "direction")
@@ -155,6 +165,7 @@ func main() {
 		processVideo.Rotate(root, pattern, direction, threads)
 	case "resize":
 		pattern, _ = conf.GetValue("pattern", "video")
+		pattern = strings.Join([]string{pattern, strings.ToUpper(pattern)}, ";")
 		root, _ = conf.GetValue("root", "video")
 		threads, _ = conf.GetValue("thread", "threads")
 		slog.Info("开始缩小视频处理进程", slog.String("根目录", root), slog.String("pattern", pattern), slog.String("进程数", threads))
@@ -166,19 +177,22 @@ func main() {
 	case "speedUp":
 		root, _ = conf.GetValue("root", "speedUp")
 		pattern, _ = conf.GetValue("pattern", "speedUp")
+		pattern = strings.Join([]string{pattern, strings.ToUpper(pattern)}, ";")
 		processAudio.SpeedUpAudios(root, pattern, processAudio.AudioBook)
 		slog.Info("开始有声小说加速处理", slog.String("根目录", root))
 	case "gif":
 		root, _ = conf.GetValue("root", "gif")
 		pattern, _ = conf.GetValue("pattern", "gif")
+		pattern = strings.Join([]string{pattern, strings.ToUpper(pattern)}, ";")
 		threads, _ = conf.GetValue("thread", "threads")
 		processImage.ProcessAllImagesLikeGif(root, pattern, threads)
+	case "txt":
+		root, _ = conf.GetValue("root", "txt")
+		pattern, _ = conf.GetValue("pattern", "txt")
+		pattern = strings.Join([]string{pattern, strings.ToUpper(pattern)}, ";")
+		GBK2UTF8.AllGBKs2UTF8(root, pattern)
 	}
-	end := time.Now()
-	if email, _ := conf.GetValue("alert", "email"); email == "yes" {
-		slog.Info("发送任务完成邮件")
-		sendEmail(start, end)
-	}
+	end = time.Now()
 }
 func sendEmail(start, end time.Time) {
 	i := new(sendEmailAlert.Info)
